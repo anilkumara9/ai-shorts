@@ -3,19 +3,94 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --premium-purple: 123, 97, 255;  /* #7B61FF */
+  --premium-gold: 247, 184, 80;    /* #F7B850 */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: black;
+  color: white;
+}
+
+/* Premium gradient text effect */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--premium-purple))] to-[rgb(var(--premium-gold))];
+}
+
+/* Premium card effect */
+.premium-card {
+  @apply border border-white/10 bg-white/5 backdrop-blur-sm;
+}
+
+/* Animated background gradient */
+.animated-gradient {
+  background: linear-gradient(
+    45deg,
+    rgba(var(--premium-purple), 0.1),
+    rgba(var(--premium-gold), 0.1)
+  );
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--premium-purple), 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--premium-purple), 0.7);
+}
+
+/* Loading animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgb(var(--premium-purple));
+  outline-offset: 2px;
 }

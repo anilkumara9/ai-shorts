@@ -3,6 +3,7 @@ import { motion, useAnimation } from 'framer-motion'
 import { Youtube, Star, TrendingUp, Users } from 'lucide-react'
 import { useState } from 'react'
 
+
 const creators = [
   {
     name: 'Ishan Sharma',

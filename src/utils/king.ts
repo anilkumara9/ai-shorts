@@ -11,7 +11,7 @@ interface KingConfig {
   retryDelay?: number;
 }
 
-interface ProcessingResult<T = any> {
+interface ProcessingResult<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;
@@ -115,7 +115,7 @@ export class King {
       if (
         retryCount < this.config.maxRetries &&
         error instanceof AxiosError &&
-        (error.response?.status === 429 || error.response?.status >= 500)
+        (error.response?.status === 429 || (error.response?.status ?? 0) >= 500)
       ) {
         console.warn(`Retrying operation due to ${error.response?.status} error. Attempt ${retryCount + 1} of ${this.config.maxRetries}`);
         const delay = this.config.retryDelay * Math.pow(2, retryCount);
@@ -209,7 +209,7 @@ Please provide analysis in the following areas:
       }
 
       // Parse and validate the response
-      const analysis = this.parseVideoAnalysis(response.data);
+      const analysis = this.parseVideoAnalysis(response.data as string);
 
       return {
         success: true,
@@ -301,7 +301,7 @@ Please provide analysis in the following areas:
 }
 
 // Helper functions
-export const formatResponse = (response: any): string => {
+export const formatResponse = (response: unknown): string => {
   return typeof response === 'string' ? response : JSON.stringify(response, null, 2);
 };
 

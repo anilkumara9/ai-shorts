@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Link2, Upload, Send } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const EnhancedHero = () => {
   const [isHovered, setIsHovered] = useState(false)
@@ -129,10 +130,12 @@ const EnhancedHero = () => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <img
+              <Image
                 src="/placeholder.svg?height=192&width=256"
                 alt="Original video"
                 className="w-full h-full object-cover"
+                width={256}
+                height={192}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </motion.div>
@@ -176,10 +179,12 @@ const EnhancedHero = () => {
                     ease: 'easeOut',
                   }}
                 >
-                  <img
+                  <Image
                     src="/placeholder.svg?height=288&width=160"
                     alt={`Short ${index + 1}`}
                     className="w-full h-full object-cover"
+                    width={160}
+                    height={288}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </motion.div>

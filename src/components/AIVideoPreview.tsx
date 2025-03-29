@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Play, Pause, SkipForward } from 'lucide-react'
 
+import Image from 'next/image'
+
 const AIVideoPreview = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentScene, setCurrentScene] = useState(0)
@@ -22,7 +24,13 @@ const AIVideoPreview = () => {
       }, 3000)
       return () => clearInterval(interval)
     }
-  }, [isPlaying])
+  }, [isPlaying, scenes.length])
+
+  useEffect(() => {
+    if (currentScene >= scenes.length) {
+      setCurrentScene(0);
+    }
+  }, [currentScene, scenes.length]);
 
   const generateRandomHighlights = () => {
     const newHighlights = Array(3).fill(0).map(() => ({
@@ -45,10 +53,12 @@ const AIVideoPreview = () => {
     <div className="bg-gray-900 rounded-lg p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300">
       <h3 className="text-2xl font-bold mb-4">AI-Powered Video Analysis</h3>
       <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden mb-4">
-        <img
+        <Image
           src={scenes[currentScene]}
           alt={`Video scene ${currentScene + 1}`}
           className="w-full h-full object-cover"
+          width={640}
+          height={360}
         />
         {highlightedAreas.map((area, index) => (
           <div

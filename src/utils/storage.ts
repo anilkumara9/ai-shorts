@@ -5,7 +5,6 @@ import {
   DeleteObjectCommand,
   HeadObjectCommand,
   ListObjectsV2Command,
-  CopyObjectCommand,
   S3ServiceException
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
@@ -136,8 +135,6 @@ export class StorageService {
     this.validateFileSize(file);
 
     const fullKey = this.getFullKey(key);
-    const startTime = Date.now();
-    let uploadedBytes = 0;
 
     try {
       await this.retryOperation(async () => {

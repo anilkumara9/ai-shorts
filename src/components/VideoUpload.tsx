@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Upload, Video, X, FileVideo } from 'lucide-react';
+import { motion, AnimatePresence, HTMLMotionProps } from 'framer-motion';
+import { Upload, FileVideo, X } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 
 export default function VideoUpload() {
@@ -31,7 +31,7 @@ export default function VideoUpload() {
       <div className="relative">
         {/* Upload Area */}
         <motion.div
-          {...getRootProps()}
+          {...(getRootProps() as HTMLMotionProps<"div">)}
           className={`relative overflow-hidden rounded-2xl transition-all duration-300 ${
             isDragActive ? 'scale-105' : 'scale-100'
           }`}

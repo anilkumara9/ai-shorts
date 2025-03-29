@@ -155,7 +155,7 @@ export default function Footer() {
               className="text-sm text-white/50 hover:text-white/80 transition-colors"
               whileHover={{ color: 'rgb(var(--premium-gold))' }}
             >
-              support@importtrace.com
+              anilkumarmeda6@gmail.com
             </motion.a>
           </div>
         </div>

@@ -1,8 +1,18 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 import { Youtube, Star, TrendingUp, Users } from 'lucide-react'
+import { useState } from 'react'
 
 const creators = [
+  {
+    name: 'Ishan Sharma',
+    handle: '@IshanSharma',
+    subscribers: '1.2M',
+    views: '50M+',
+    engagement: '+178%',
+    testimonial: 'ImportTrace has revolutionized how I create tech tutorials and coding content.',
+    avatar: '/creators/ishan.jpg',
+  },
   {
     name: 'MrBeast',
     handle: '@MrBeast',
@@ -78,6 +88,9 @@ const creators = [
 ]
 
 export default function YouTuberShowcase() {
+  const [isHovered, setIsHovered] = useState(false);
+  const scrollControl = useAnimation();
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background Effects */}
@@ -106,93 +119,100 @@ export default function YouTuberShowcase() {
         {/* Creator Cards with Continuous Animation */}
         <motion.div 
           className="flex overflow-hidden group"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           initial="hidden"
           animate="visible"
         >
           <motion.div
             className="flex"
-            animate={{
-              x: [0, '-100%', 0],
-              transition: {
-                x: {
-                  repeat: Infinity,
-                  duration: 90, // Increased duration to make it move slower
-                  ease: "linear"
-                }
-              }
-            }}
+            animate={scrollControl}
+            initial={{ x: 0 }}
+            transition={{ duration: 90, ease: "linear", repeat: Infinity }}
+            onMouseEnter={() => scrollControl.stop()}
+            onMouseLeave={() => scrollControl.start({ x: "-100%" })}
           >
             {[...creators, ...creators, ...creators].map((creator, index) => (
-              <motion.div
-                key={`${creator.name}-${index}`}
-                variants={{
-                  hidden: { opacity: 0, x: 50 },
-                  visible: { 
-                    opacity: 1, 
-                    x: 0,
-                    transition: {
-                      duration: 0.5
-                    }
-                  }
-                }}
-                className="group w-80 flex-shrink-0 mx-4"
-              >
-                <div className="relative p-6 rounded-2xl overflow-hidden h-full">
-                  {/* Card Background */}
-                  <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--premium-purple))] to-[rgb(var(--premium-gold))] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-
-                  {/* Content */}
-                  <div className="relative space-y-6">
-                    {/* Creator Info */}
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[rgb(var(--premium-purple))] to-[rgb(var(--premium-gold))] p-[1px]">
-                        <div className="w-full h-full rounded-full bg-black/90 flex items-center justify-center text-xl font-bold">
-                          {creator.name[0]}
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg">{creator.name}</h3>
-                        <p className="text-white/60">{creator.handle}</p>
-                      </div>
-                    </div>
-
-                    {/* Stats */}
-                    <div className="grid grid-cols-3 gap-4">
-                      <div>
-                        <p className="text-white/40 text-sm mb-1">Subscribers</p>
-                        <div className="flex items-center gap-1">
-                          <Users className="w-4 h-4 text-white/60" />
-                          <span className="font-medium">{creator.subscribers}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-white/40 text-sm mb-1">Views</p>
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 text-white/60" />
-                          <span className="font-medium">{creator.views}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-white/40 text-sm mb-1">Growth</p>
-                        <div className="flex items-center gap-1 text-[rgb(var(--premium-gold))]">
-                          <TrendingUp className="w-4 h-4" />
-                          <span className="font-medium">{creator.engagement}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Testimonial */}
-                    <blockquote className="text-white/80 italic">
-                      "{creator.testimonial}"
-                    </blockquote>
-                  </div>
-                </div>
-              </motion.div>
+              <CreatorCard key={`${creator.name}-${index}`} creator={creator} />
             ))}
           </motion.div>
         </motion.div>
       </div>
     </section>
   )
+}
+
+function CreatorCard({ creator }) {
+  return (
+    <motion.div
+      className="group w-80 flex-shrink-0 mx-4"
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+    >
+      <motion.div 
+        className="relative p-6 rounded-2xl overflow-hidden h-full"
+        initial={{ background: 'rgba(255,255,255,0.05)' }}
+        whileHover={{
+          background: 'rgba(255,255,255,0.1)',
+          transition: { duration: 0.3 }
+        }}
+      >
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--premium-purple))] to-[rgb(var(--premium-gold))]"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 0.15 }}
+          transition={{ duration: 0.3 }}
+        />
+
+        {/* Content */}
+        <div className="relative space-y-6 z-10">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-[rgb(var(--premium-purple))] to-[rgb(var(--premium-gold))] p-[1px]">
+              <motion.div 
+                className="w-full h-full rounded-full bg-black/90 flex items-center justify-center text-xl font-bold"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                {creator.name[0]}
+              </motion.div>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg">{creator.name}</h3>
+              <p className="text-white/60">{creator.handle}</p>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4">
+            <div>
+              <p className="text-white/40 text-sm mb-1">Subscribers</p>
+              <div className="flex items-center gap-1">
+                <Users className="w-4 h-4 text-white/60" />
+                <span className="font-medium">{creator.subscribers}</span>
+              </div>
+            </div>
+            <div>
+              <p className="text-white/40 text-sm mb-1">Views</p>
+              <div className="flex items-center gap-1">
+                <Star className="w-4 h-4 text-white/60" />
+                <span className="font-medium">{creator.views}</span>
+              </div>
+            </div>
+            <div>
+              <p className="text-white/40 text-sm mb-1">Growth</p>
+              <div className="flex items-center gap-1 text-[rgb(var(--premium-gold))]">
+                <TrendingUp className="w-4 h-4" />
+                <span className="font-medium">{creator.engagement}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial */}
+          <blockquote className="text-white/80 italic">
+            "{creator.testimonial}"
+          </blockquote>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
 }

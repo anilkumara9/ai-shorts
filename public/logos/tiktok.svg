@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="tiktok-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f2ea"/>
+      <stop offset="100%" style="stop-color:#ff0050"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#tiktok-gradient)" d="M19.1 7.3V5.7C17.6 5.7 16.3 5.2 15.2 4.3C14.2 3.4 13.5 2.2 13.3 0.8H11.7V16.5C11.7 18.1 10.4 19.4 8.8 19.4C7.2 19.4 5.9 18.1 5.9 16.5C5.9 14.9 7.2 13.6 8.8 13.6C9.2 13.6 9.6 13.7 9.9 13.9V12.2C9.6 12.1 9.2 12 8.8 12C6.3 12 4.3 14 4.3 16.5C4.3 19 6.3 21 8.8 21C11.3 21 13.3 19 13.3 16.5V8.2C14.4 9.2 15.8 9.8 17.3 9.8V8.2C15.8 8.2 14.5 7.3 13.9 6H19.1V7.3Z"/>
+</svg>

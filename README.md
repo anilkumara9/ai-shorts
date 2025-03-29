@@ -1,7 +1,10 @@
-# King Project 🏰
+# King Project - AI Video Creation Platform
 
-![Next.js](https://img.shields.io/badge/Next.js-13.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Next.js](https://img.shields.io/badge/Next.js-13.0-black)
+
+[Add a project banner or logo here]
 
 King is a powerful AI-driven video creation platform that helps content creators generate viral short-form videos for multiple social media platforms. Built with Next.js and cutting-edge AI technology, it streamlines the content creation process with seamless export capabilities to major platforms like YouTube, TikTok, Instagram, and more.
 
@@ -69,6 +72,16 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## 📱 Social Media
+
+Connect with us:
+- [Twitter](https://twitter.com/yourusername)
+- [LinkedIn](https://linkedin.com/in/yourusername)
+- [YouTube](https://youtube.com/@yourchannel)
+
+## 🌟 Star Us
+If you find this project helpful, please consider giving it a star on GitHub!
 
 ## 📄 License
 

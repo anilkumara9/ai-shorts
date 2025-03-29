@@ -4,10 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
 
 # testing
 /coverage
@@ -18,24 +14,19 @@
 
 # production
 /build
-/dist
 
 # misc
 .DS_Store
 *.pem
-Thumbs.db
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
 
 # local env files
 .env*.local
-.env.development
-.env.test
-.env.production
+.env
 
 # vercel
 .vercel
@@ -45,22 +36,8 @@ yarn-error.log*
 next-env.d.ts
 
 # IDE
-.idea
-.vscode
-*.swp
-*.swo
-
-# uploads
-/uploads
-/video
-/temp
+.vscode/
+.idea/
 
 # OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-.qodo
